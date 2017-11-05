@@ -1,10 +1,23 @@
 {
   "name": "sylz",
   "version": "1.0.0",
+  "private": true,
   "engines": {
     "node": "6.11.2",
     "npm": "3.10.10",
     "yarn": "1.2.0"
+  },
+   "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild":"yarn build && bash ./utils/djangify_react.sh"
+  },
+    "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.17"
   },
   "description": "Sylz converted to react, plus geo feature.",
   "main": "index.js",
