@@ -3,6 +3,8 @@
 # It copies all assets to static and templates in order for django to serve them correctly.
 
 rsync build/*.html templates/
+
 rsync -r build/static/ static
+rsync build/*.ico static/
 
 echo "Assets synchronized"
