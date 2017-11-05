@@ -1,0 +1,1 @@
+web: gunicorn sylz.wsgi --log-file -
