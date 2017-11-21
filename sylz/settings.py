@@ -17,8 +17,11 @@ import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-TEMPLATE_PATH = os.path.join(BASE_DIR,'templates')
-STATIC_PATH = os.path.join(BASE_DIR,'static')
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+STATIC_PATH = os.path.join(BASE_DIR, 'static')
+
+REACT_BUILD = os.path.join(BASE_DIR, 'build')
+REACT_STATIC = os.path.join(REACT_BUILD, 'static')
 
 ALLOWED_HOSTS = ['*']
 SECRET_KEY = os.environ['SECRET_KEY']
@@ -68,8 +71,7 @@ ROOT_URLCONF = 'sylz.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_PATH]
-        ,
+        'DIRS': [TEMPLATE_PATH, REACT_BUILD,],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -145,11 +147,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_URL = '/static/'
+STATIC_URL = '/react/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
+    REACT_BUILD,
+    REACT_STATIC,
     STATIC_PATH,
 )
 

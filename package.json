@@ -2,19 +2,21 @@
   "name": "sylz",
   "version": "1.0.0",
   "private": true,
+  "homepage": "/react/",
   "engines": {
     "node": "6.11.2",
     "npm": "3.10.10",
     "yarn": "1.2.0"
   },
-   "scripts": {
+  "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku-postbuild":"yarn build && bash ./utils/djangify_react.sh"
+    "heroku-postbuild": "yarn build"
   },
-    "dependencies": {
+  "dependencies": {
+    "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.17"
@@ -23,5 +25,12 @@
   "main": "index.js",
   "repository": "git@github.com:Sylvestre67/react_sylz.git",
   "author": "Sylvestre Gug <sylvestre.gug@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-jsx-a11y": "6.0.2",
+    "eslint-plugin-react": "7.4.0"
+  }
 }
