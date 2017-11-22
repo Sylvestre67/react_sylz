@@ -14,15 +14,14 @@ class App extends Component {
         const wrapps = this.list.map((el,index) => {
             return (
                 <Wrapper key={[el,index].join('_')}>
-                    <p></p>
                 </Wrapper>
             )
         });
         return (
-            <div>
+            <div className="app container-fluid">
                 <Mask />
                 <div className="row">
-                    <div className="col-xs-offset-1 col-xs-10">
+                    <div className="col-xs-12">
                         {wrapps}
                     </div>
                 </div>
