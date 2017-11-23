@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh 'echo 'Done testing.'
+                sh 'echo "Done testing."'
             }
         }
     }
