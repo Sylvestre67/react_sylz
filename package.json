@@ -15,9 +15,7 @@
     "eject": "react-scripts eject",
     "heroku-postbuild": "yarn build"
   },
-  "jest":{
-
-  },
+  "jest": {},
   "devDependencies": {
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
@@ -29,6 +27,7 @@
     "eslint-plugin-react": "^7.4.0"
   },
   "dependencies": {
+    "cross-env": "^5.1.1",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
