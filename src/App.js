@@ -1,28 +1,41 @@
 import React, { Component } from 'react';
-import './App.css';
 
-import Wrapper from './layout/Wrapper';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/map';
+
+import './App.css';
 import Mask from './layout/Mask';
+import Place from './components/Place';
+
+const state = Observable.fromPromise(fetch('/api/places'));
 
 class App extends Component {
     constructor(props){
         super(props);
-        this.list = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+        this.state = {places: []};
+    }
+
+    componentWillMount() {
+        this.places = state
+            .map(response => {return response.json()})
+            .subscribe(json => json.then((places) => { this.setState({places: places.results});}));
+    }
+
+    componentWillUnmount() {
+        this.places.unsubscribe();
     }
 
     render() {
-        const wrapps = this.list.map((el,index) => {
-            return (
-                <Wrapper key={[el,index].join('_')}>
-                </Wrapper>
-            )
-        });
         return (
             <div className="app container-fluid">
                 <Mask />
                 <div className="row">
                     <div className="col-xs-12">
-                        {wrapps}
+                        {this.state.places.map((place,index) =>
+                            <Place key={[place.id,index].join('_')}
+                                   place={place}></Place>
+                        )}
                     </div>
                 </div>
                 <Mask position="bottom" />

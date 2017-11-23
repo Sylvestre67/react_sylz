@@ -4,6 +4,8 @@
         "react/jsx-filename-extension": "off"
   },
   "globals": {
-    "window": true
+    "window": true,
+    "document": true,
+    "fetch": true
   }
 }
