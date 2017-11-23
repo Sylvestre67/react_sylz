@@ -1,0 +1,44 @@
+{
+  "name": "react_sylz",
+  "scripts": {
+  },
+  "env": {
+    "DJANGO_SETTINGS_MODULE": {
+      "required": true
+    },
+    "G_API_KEY": {
+      "required": true
+    },
+    "NODE_ENV": {
+      "required": true
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "required": true
+    },
+    "PYTHONUNBUFFERED": {
+      "required": true
+    },
+    "SECRET_KEY": {
+      "required": true
+    },
+    "VENDOR_LIB_PATH": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/dschep/heroku-geo-buildpack.git"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
