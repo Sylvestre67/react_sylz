@@ -33,7 +33,7 @@ class App extends Component {
                 <div className="row">
                     <div className="col-xs-12">
                         {this.state.places.map((place,index) =>
-                            <Place key={[place.id,index].join('_')}
+                            <Place key={[place.id, index].join('_')}
                                    place={place}></Place>
                         )}
                     </div>

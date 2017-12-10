@@ -14,7 +14,11 @@ class Place extends Component {
     }
 }
 
-Place.propTypes = {};
+Place.propTypes = {
+    place: PropTypes.shape({
+        name: PropTypes.string
+    }).isRequired
+};
 Place.defaultProps = {};
 
 export default Place;
