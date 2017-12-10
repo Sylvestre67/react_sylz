@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import './fresque.css';
+import Winewood from "../fresques/Winewood";
+
 class Fresque extends Component {
     constructor(props){
         super(props);
@@ -11,6 +14,7 @@ class Fresque extends Component {
         return (
             <div ref={(element) => {this.element = element}}
                  className={[this.props.place.name, 'fresque'].join(' ')}>
+                    <Winewood/>
             </div>
         );
     }

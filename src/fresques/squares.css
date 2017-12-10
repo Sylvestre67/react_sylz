@@ -1,0 +1,15 @@
+
+.outer{
+    display:flex;
+    flex-flow: row wrap;
+    /*height:100%;*/
+    background-color:cornflowerblue;
+    justify-content: center;
+}
+
+.outer > .inner{
+    width:1em;
+    height:1em;
+    margin:1em;
+    background-color:pink;
+}
