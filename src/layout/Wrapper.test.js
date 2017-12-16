@@ -6,8 +6,8 @@ Enzyme.configure({ adapter: new Adapter() });
 
 import Wrapper from './Wrapper';
 
-describe('Mask', () => {
-    test('Mask component', () => {
+describe('Wrapper', () => {
+    test('Wrapper component', () => {
         const wrapper = shallow(<Wrapper>(<p>Testing</p>)</Wrapper>);
         expect(shallowToJson(wrapper)).toMatchSnapshot();
     });

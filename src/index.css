@@ -1,4 +1,28 @@
 body, html {
-  all: unset;
-  position:relative;
+    all: unset;
+    position:relative;
+
+    font-family: "Avenir Next","Helvetica Neue",Helvetica,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    color: #727a87;
 }
+
+a{
+    text-decoration: none;
+    color: #4a8bfc;
+
+    transition-property: color;
+    transition-duration: 0.3s;
+    transition-timing-function: initial;
+    transition-delay: initial;
+}
+
+a:hover{
+    color: rgba(74,139,252,.8);
+}
+
+:focus{
+    outline: none;
+}
+

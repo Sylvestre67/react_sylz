@@ -40,7 +40,9 @@ class BoweryHouston extends Component {
 
     drawMotives(){
         const svg = select(this.element);
-        const width = svg.node().parentNode.clientWidth;
+        const width = (svg.node().parentNode.clientWidth < 900)
+            ? 900
+            : svg.node().parentNode.clientWidth;
         const height = svg.node().parentNode.clientHeight;
         const blue = '#89A3C1';
         const black = '#0A1016';

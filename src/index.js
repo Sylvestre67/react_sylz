@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'flexboxgrid/css/flexboxgrid.css';
 
+import './ionicons.min.css';
 import './index.css';
 
 

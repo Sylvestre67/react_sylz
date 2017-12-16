@@ -1,0 +1,44 @@
+
+.description a {
+    margin:.2em 0;
+    text-align:right;
+}
+
+.description a:first-letter{
+    text-transform:capitalize;
+}
+
+.description{
+    display: flex;
+    flex-flow:row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.description a{
+    margin-right: 0.5em;
+}
+
+.description i{
+    padding: 1px .3em 0;
+    margin:0 .1em;
+    background-color: #eeeeee;
+    cursor:pointer;
+    transition: all 250ms ease-in-out;
+}
+
+.description i::before{
+    min-width: 14px;
+    text-align: center;
+}
+
+.description i:hover{
+    background-color: #a4c5fd;
+    color:#ffffff;
+}
+
+.description i.active{
+    background-color: #4a8bfc;
+    color:#ffffff;
+}
+
