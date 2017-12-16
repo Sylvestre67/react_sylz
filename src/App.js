@@ -19,7 +19,15 @@ class App extends Component {
     componentWillMount() {
         this.places = state
             .map(response => {return response.json()})
-            .subscribe(json => json.then((places) => { this.setState({places: places.results});}));
+            .subscribe(json => json.then((places) => {
+                places.results.forEach((point,index, points) => {
+                    // TODO: Set this up server side.
+                    point.location.coordinates.reverse();
+                    if(index === points.length -1){
+                        this.setState({places: places.results});
+                    }
+                });
+            }));
     }
 
     componentWillUnmount() {

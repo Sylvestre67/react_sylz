@@ -12,8 +12,10 @@ function Wrapper(props) {
 }
 
 Wrapper.propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
 };
-Wrapper.defaultProps = {};
+Wrapper.defaultProps = {
+    children: '',
+};
 
 export default Wrapper;

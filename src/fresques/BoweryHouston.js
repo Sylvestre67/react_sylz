@@ -15,7 +15,7 @@ class BoweryHouston extends Component {
         this.element = undefined;
         this.currentIndex = 0;
         this.lastIndex = 0;
-        this.drawMotives = debounce(this.drawMotives.bind(this), 250);
+        this.drawMotives = debounce(this.drawMotives.bind(this), 50);
         this.setCircleFill = this.setCircleFill.bind(this);
     }
 
@@ -40,6 +40,7 @@ class BoweryHouston extends Component {
 
     drawMotives(){
         const svg = select(this.element);
+        const svgWidth = svg.node().parentNode.clientWidth;
         const width = (svg.node().parentNode.clientWidth < 900)
             ? 900
             : svg.node().parentNode.clientWidth;
@@ -49,7 +50,7 @@ class BoweryHouston extends Component {
         const {setCircleFill} = this;
 
         svg.attr('class', 'bowery-houston')
-            .attr('width', width)
+            .attr('width', svgWidth)
             .attr('height', height);
 
         const x = scaleLinear()

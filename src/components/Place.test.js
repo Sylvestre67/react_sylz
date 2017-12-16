@@ -7,9 +7,8 @@ Enzyme.configure({ adapter: new Adapter() });
 import Place from './Place';
 
 describe('Place', () => {
-    test('Place component', () => {
-        const place = shallow(<Place place={{name: 'testing'}} />);
+    test('should render correctly', () => {
+        const place = shallow(<Place place={{name: 'testing', location: {coordinates:[0,0]}}} />);
         expect(shallowToJson(place)).toMatchSnapshot();
     });
-
 });
