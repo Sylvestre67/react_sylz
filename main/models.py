@@ -12,6 +12,7 @@ class UUIDModel(models.Model):
 class Place(UUIDModel, TimeStampedModel):
     name = models.CharField(max_length=256)
     location = models.PointField(null=True, blank=True)
+    instagram_url = models.CharField(max_length=256, null=True, blank=True)
 
     def __str__(self):
         return "Place {} @ {}".format(self.name, self.location)
