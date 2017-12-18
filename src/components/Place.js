@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import Wrapper from '../layout/Wrapper';
 import Description from '../layout/Description';
 
-import PlaceMap from './PlaceMap';
 import Fresque from './Fresque';
+import PlaceMap from './PlaceMap';
+import Photo from './Photo';
 
 import './place.css';
 
@@ -15,7 +16,8 @@ class Place extends Component {
         this.onClickIcon = this.onClickIcon.bind(this);
         this.childSelector = {
             JS: <Fresque {...this.props} />,
-            MAP: <PlaceMap {...this.props} />
+            MAP: <PlaceMap {...this.props} />,
+            IMAGE : <Photo {...this.props} />
         };
         this.state = {activeTab: 'JS'};
     }
@@ -31,7 +33,6 @@ class Place extends Component {
             <div className="place">
                 <Wrapper>
                     {this.childSelector[this.state.activeTab]}
-                    {/*<Photo />*/}
                 </Wrapper>
                 <Description onClickOnIcon={this.onClickIcon}
                              activeTab={this.state.activeTab}
@@ -47,7 +48,8 @@ Place.propTypes = {
         location: PropTypes.shape({
             type: PropTypes.string,
             coordinates: PropTypes.arrayOf(PropTypes.number)
-      }),
+        }),
+        instagram_url: PropTypes.string
     }).isRequired
 };
 Place.defaultProps = {};
