@@ -24,6 +24,18 @@
           50.8349998
         ]
       },
+      "name": "mima_ufo",
+      "instagram_url":"https://scontent-lga3-1.cdninstagram.com/t51.2885-15/s320x320/e35/24274720_1955257381391586_6438037684714733568_n.jpg"
+    },
+    {
+      "id": "f69699a3-b0f2-449f-9594-d21eea6bd79c",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          4.363341300000001,
+          50.8349998
+        ]
+      },
       "name": "default",
       "instagram_url":"https://scontent-lga3-1.cdninstagram.com/t51.2885-15/s320x320/e35/24274720_1955257381391586_6438037684714733568_n.jpg"
     }

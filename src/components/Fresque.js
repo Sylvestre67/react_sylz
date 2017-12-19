@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 
 import './fresque.css';
 import BoweryHouston from "../fresques/BoweryHouston";
+import MimaUfo from "../fresques/MimaUfo";
 
 const fresqueIndex = {
-  "bowery_houston": <BoweryHouston />
+    "bowery_houston": <BoweryHouston />,
+    "mima_ufo" : <MimaUfo />
 };
 
 class Fresque extends Component {
