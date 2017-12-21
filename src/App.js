@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route, Switch
+} from 'react-router-dom'
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
@@ -6,7 +10,9 @@ import 'rxjs/add/operator/map';
 
 import './App.css';
 import Mask from './layout/Mask';
-import Place from './components/Place';
+
+import Places from './routes/Places';
+import NotFound from './routes/NotFound';
 
 const state = Observable.fromPromise(fetch('/api/places'));
 
@@ -36,20 +42,26 @@ class App extends Component {
 
     render() {
         return (
-            <div className="app container-fluid">
-                <Mask />
-                <div className="row">
-                    <div className="col-xs-12">
-                        {this.state.places.map((place,index) =>
-                            <Place key={[place.id, index].join('_')}
-                                   place={place}></Place>
-                        )}
+            <Router>
+                <div className="app container-fluid">
+                    <Mask />
+                    <div className="row">
+                        <div className="col-xs-12">
+                            <Switch>
+                                <Route exact path={"/"}
+                                       component={Places} />
+                                {/*<Route exact path={"/places/"}*/}
+                                       {/*component={Places} />*/}
+                                <Route component={NotFound} />
+                            </Switch>
+                        </div>
                     </div>
+                    <Mask position="bottom" />
                 </div>
-                <Mask position="bottom" />
-            </div>
-        );
+            </Router>
+        )
     }
 }
 
 export default App;
+
