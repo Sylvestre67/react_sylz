@@ -17,10 +17,10 @@ function Mask(props) {
                             <Link href="/"
                                   to="/">Places</Link>
                         </li>
-                        {/*<li>*/}
-                            {/*<Link href="/places/"*/}
-                                  {/*to="/places/">Places</Link>*/}
-                        {/*</li>*/}
+                        <li>
+                            <Link href="/knicks/"
+                                  to="/knicks/">Knicks</Link>
+                        </li>
                     </ul>
                 </div>
             </div>

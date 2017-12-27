@@ -1,0 +1,18 @@
+.assists-profile{
+    width:100%;
+    height:450px;
+    border: 1px solid #eeeeee;
+}
+
+.assists-heatmap{
+    width:100%;
+    height:450px;
+}
+
+.assists-heatmap .axis path{
+    stroke:none;
+}
+
+.assists-heatmap .axis .tick line{
+    stroke:none;
+}

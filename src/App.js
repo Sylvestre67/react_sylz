@@ -12,6 +12,7 @@ import './App.css';
 import Mask from './layout/Mask';
 
 import Places from './routes/Places';
+import Knicks from './routes/Knicks';
 import NotFound from './routes/NotFound';
 
 const state = Observable.fromPromise(fetch('/api/places'));
@@ -50,8 +51,8 @@ class App extends Component {
                             <Switch>
                                 <Route exact path={"/"}
                                        component={Places} />
-                                {/*<Route exact path={"/places/"}*/}
-                                       {/*component={Places} />*/}
+                                <Route exact path={"/knicks/"}
+                                       component={Knicks} />
                                 <Route component={NotFound} />
                             </Switch>
                         </div>

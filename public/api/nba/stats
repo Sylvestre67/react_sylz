@@ -1,0 +1,70 @@
+{
+	"count": 2,
+	"next": null,
+	"previous": null,
+	"results": [{
+			"name": "ntilikina",
+			"assists": [{
+					"pass_to": "lee",
+					"assists": 3
+				},
+				{
+					"pass_to": "portzingas",
+					"assists": 2
+				},
+				{
+					"pass_to": "o'quinn",
+					"assists": 3
+				}
+			]
+		},
+		{
+			"name": "lee",
+			"assists": [{
+					"pass_to": "ntilikina",
+					"assists": 4
+				},
+				{
+					"pass_to": "portzingas",
+					"assists": 8
+				},
+				{
+					"pass_to": "o'quinn",
+					"assists": 2
+				}
+			]
+		},
+		{
+			"name": "portzingas",
+			"assists": [{
+					"pass_to": "lee",
+					"assists": 0
+				},
+				{
+					"pass_to": "ntilikina",
+					"assists": 2
+				},
+				{
+					"pass_to": "o'quinn",
+					"assists": 3
+				}
+			]
+		},
+		{
+			"name": "o'quinn",
+			"assists": [{
+					"pass_to": "lee",
+					"assists": 1
+				},
+				{
+					"pass_to": "ntilikina",
+					"assists": 5
+				},
+				{
+					"pass_to": "portzingas",
+					"assists": 1
+				}
+			]
+		}
+	]
+}
