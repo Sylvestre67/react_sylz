@@ -46,33 +46,33 @@ class AssistsTable extends Component {
     render() {
         return (
             <div className='assists-table'>
-                <ReactTable
-                    data={this.getData()}
-                    columns={this.getHeaders()}
-                    defaultPageSize={12}
-                    showPagination={false}
-                    getTrProps={(state, rowInfo, column) => {
-                        return {
-                            onClick: (e, handleOriginal) => {
-                                this.handleClickOnRow(rowInfo.index);
-                                if (handleOriginal) {
-                                    handleOriginal()
-                                }
-                            }
-                        }
-                    }}
-                />
+                {/*<ReactTable*/}
+                    {/*data={this.getData()}*/}
+                    {/*columns={this.getHeaders()}*/}
+                    {/*defaultPageSize={12}*/}
+                    {/*showPagination={false}*/}
+                    {/*getTrProps={(state, rowInfo, column) => {*/}
+                        {/*return {*/}
+                            {/*onClick: (e, handleOriginal) => {*/}
+                                {/*this.handleClickOnRow(rowInfo.index);*/}
+                                {/*if (handleOriginal) {*/}
+                                    {/*handleOriginal()*/}
+                                {/*}*/}
+                            {/*}*/}
+                        {/*}*/}
+                    {/*}}*/}
+                {/*/>*/}
             </div>
         );
     }
 }
 
-AssistsTable.propTypes = {
-    data: PropTypes.shape({
-        results: PropTypes.arrayOf(PropTypes.shape())
-    }).isRequired,
-    updateActivePlayer: PropTypes.func.isRequired
-};
-AssistsTable.defaultProps = {};
+// AssistsTable.propTypes = {
+//     data: PropTypes.shape({
+//         results: PropTypes.arrayOf(PropTypes.shape())
+//     }).isRequired,
+//     updateActivePlayer: PropTypes.func.isRequired
+// };
+// AssistsTable.defaultProps = {};
 
 export default AssistsTable;

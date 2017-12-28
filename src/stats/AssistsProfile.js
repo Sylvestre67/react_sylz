@@ -1,58 +1,64 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import {select} from 'd3-selection';
+import {scaleLinear, scaleBand} from 'd3-scale';
+import {axisTop, axisLeft} from 'd3-axis';
+import {max} from 'd3-array';
+
 import AssistsChart from './AssistsChart';
 
 import './assists-profile.css';
-import {select} from 'd3-selection';
-import {pie, arc} from 'd3-shape';
-import {scaleLinear, scalePoint} from 'd3-scale';
-import {axisTop, axisLeft} from 'd3-axis';
-import {max} from 'd3-array';
 
 class AssistsProfile extends Component {
     constructor(props){
         super(props);
-        this.computeChart = this.computeChart.bind(this);
         this.state = {chart: undefined};
     }
 
     componentDidMount(){
-        // this.computeChart();
         this.drawHeatMap();
     }
-
+     /* eslint-disable class-methods-use-this */
     getSvgDimensions(element){
          const svg = select(element);
          return {svg:svg, width: svg.node().clientWidth, height: svg.node().clientHeight}
     }
+    /* eslint-enable */
 
     drawHeatMap(){
-        const {svg, width, height} = this.getSvgDimensions(this.heatMapElement);
-        const margin = {left: 100, top: 40, bottom: 40, right: 40};
+        const {svg, width} = this.getSvgDimensions(this.heatMapElement);
+        const margin = {left: 100, top: 40, bottom: -40, right: 40};
         const chartWidth = width - margin.left - margin.right;
-        const chartHeight = height - margin.top - margin.bottom;
+        const chartHeight = chartWidth;
 
         let players = this.props.player.assists.map((player) => {
-            return player.pass_to
+            return player.name
         });
 
-        players = ['', this.props.player.name].concat(players);
-
-        const numberOfAssists = this.props.stats.results
-            .map((p) => { return max(p.assists, (d) => { return d.assists }) });
+        const assistsNumber = this.props.stats
+            .map((player) => {
+                return max(player.assists.map((assist) => {
+                    return (assist.pass_from > assist.pass_to)
+                        ? assist.pass_from
+                        : assist.pass_to
+                }))
+            });
 
         const colorScale = scaleLinear()
-            .domain([0, max(numberOfAssists, (d) => { return d})])
+            .domain([0, max(assistsNumber) * 2])
             .range(["#FFFFDD", "#3E9583", "#1F2D86"]);
 
-        const xPlayersScale = scalePoint()
+        const xPlayersScale = scaleBand()
             .domain(players)
             .range([0, chartWidth]);
 
-        const yPlayersScale = scalePoint()
+        const yPlayersScale = scaleBand()
             .domain(players)
             .range([0, chartHeight]);
+
+        const rectHeight = yPlayersScale.bandwidth();
+        const rectWidth = xPlayersScale.bandwidth();
 
         const topAxis = axisTop()
             .scale(xPlayersScale);
@@ -70,21 +76,17 @@ class AssistsProfile extends Component {
             .call(topAxis);
 
         const player = g.selectAll('.assists')
-            .data(this.props.stats.results)
+            .data(this.props.stats)
             .enter().append('g')
             .attr('class','assists')
             .attr('transform',(d) => { return ['translate(',
-                xPlayersScale(d.name), ',',
+                xPlayersScale(d._name), ',',
                 0,')'].join('')
             });
 
-        player
-            .append('rect')
-            .attr('transform',(d) => { return ['translate(', 0, ',', yPlayersScale(d.name),')'].join('') })
-            .attr('width',10).attr('height',10).style('fill','#eeeeee');
+        player._groups[0].forEach((es, index) => { // eslint-disable-line no-underscore-dangle
 
-        player._groups[0].forEach((es, index) => {
-            console.log(player.data()[index].assists);
+            const playerName = select(es).data()[0]['_name']; // eslint-disable-line no-underscore-dangle
 
             let assists = select(es).selectAll(['.heated-point'].join(''))
                 .data(player.data()[index].assists)
@@ -92,82 +94,30 @@ class AssistsProfile extends Component {
                 .attr('class', ['.heated-point'].join(''));
 
             assists.append('rect')
-                .attr('transform', (d,i) => { return ['translate(', 0 ,',', yPlayersScale(d.pass_to) ,')'].join('') })
-                .attr('width', 10)
-                .attr('height', 10)
-                .style('fill', (d) => { return colorScale(d.assists) });
-        })
+                .attr('transform', (d) => { return ['translate(', 0 ,',', yPlayersScale(d.name) ,')'].join('') })
+                .attr('width', rectWidth)
+                .attr('height', rectHeight)
+                .style('fill', (d) => {
+                    return (d.name === playerName)
+                        ? 'rgba(238, 238, 238, 0.3)'
+                        : colorScale(d.pass_to + d.pass_from)
+                });
+        });
 
-         // point.selectAll(['.heated-point ', '.', player.name].join(''))
-         //        .data(player.assists)
-         //        .enter().append('rect')
-         //            .attr('transform',(d,i) => { return ['translate(', 0 ,',', yPlayersScale(d.pass_to) ,')'].join('') })
-         //            .attr('width',10)
-         //            .attr('height',10)
-         //            .style('fill','#eeeeee');
+        const ticks = g.selectAll('.axis.x .tick text');
+        ticks._groups[0].forEach((n,i) => { // eslint-disable-line no-underscore-dangle
+            if(i%2 !== 0){
+                n.setAttribute('y','-25');
+            }
+        });
 
     };
-
-    computeChart(){
-        /* Here, d3 is computing all attributes values. */
-        const svg = select(this.element);
-        const svgWidth = svg.node().clientWidth;
-        const width = (svg.node().clientWidth < 900)
-            ? 900
-            : svg.node().clientWidth;
-
-        const height = svg.node().clientHeight;
-        const radius = height* .5;
-
-        const {assists} = this.props.player;
-        let nodes = [];
-
-        const angleScale = scaleLinear()
-            .domain([0, assists.length])
-            .range([0,360]);
-
-        const pieData = pie()
-            .value((d,i) => { return i + 1; })
-            (assists);
-
-        pieData.forEach((assist, index) => {
-            const _arc = arc()
-                .innerRadius(0)
-                .outerRadius(radius * 2)
-                .startAngle(assist.startAngle)
-                .endAngle(assist.endAngle);
-
-            nodes.push(Object.assign({}, assist, {
-                centroid: _arc.centroid(),
-                rotate: angleScale(index)
-            }))
-        });
-
-        this.setState((prevState) => {
-            return Object.assign({}, prevState, {
-                chart:{
-                    radius: radius,
-                    center: {
-                        transform: ['translate(', svgWidth * .5 ,',', height * .5 ,')'].join('')
-                    },
-                    circle: {
-                        r: radius,
-                        style:{
-                            stroke:'none',
-                            strokeWidth: '1px',
-                            fill: 'none',
-                        }
-                    },
-                    nodes: nodes
-                }
-            })
-        });
-    }
 
     render() {
         return (
             <div className="row">
                 <div className="col-xs-6">
+                    <h5>Interactions Map</h5>
                     <svg ref={(element) => { this.heatMapElement = element }} className="assists-heatmap">
                         {(this.state.chart)
                             ? <AssistsChart {...this.state.chart} {...this.props} />
@@ -175,9 +125,7 @@ class AssistsProfile extends Component {
                     </svg>
                 </div>
                 <div className="col-xs-6">
-                    {/*<svg ref={(element) => { this.element = element }} className="assists-profile">*/}
-                        {/*{(this.state.chart) ? <AssistsChart {...this.state.chart} {...this.props} /> : null}*/}
-                    {/*</svg>*/}
+                    <h5>Assists Balance</h5>
                 </div>
             </div>
         );
@@ -186,13 +134,21 @@ class AssistsProfile extends Component {
 
 AssistsProfile.propTypes = {
     player: PropTypes.shape({
-        name:PropTypes.string,
+        _name:PropTypes.string,
         assists:PropTypes.arrayOf(PropTypes.shape({
-            pass_to: PropTypes.string,
-            assists: PropTypes.number
+            name: PropTypes.string,
+            pass_to: PropTypes.number,
+            pass_from: PropTypes.number
         }))
     }).isRequired,
-    stats: PropTypes.shape().isRequired
+    stats: PropTypes.arrayOf(PropTypes.shape({
+        _name:PropTypes.string,
+        assists:PropTypes.arrayOf(PropTypes.shape({
+            name: PropTypes.string,
+            pass_to: PropTypes.number,
+            pass_from: PropTypes.number
+        }))
+    })).isRequired
 };
 AssistsProfile.defaultProps = {};
 

@@ -1,12 +1,12 @@
 .assists-profile{
     width:100%;
-    height:450px;
+    height:100%;
     border: 1px solid #eeeeee;
 }
 
 .assists-heatmap{
-    width:100%;
-    height:450px;
+    width: 100%;
+    height: 400px;
 }
 
 .assists-heatmap .axis path{
@@ -15,4 +15,9 @@
 
 .assists-heatmap .axis .tick line{
     stroke:none;
+}
+
+.assists-heatmap .axis .tick text{
+    stroke:none;
+    font-size:1.2em;
 }
