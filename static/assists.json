@@ -1,0 +1,362 @@
+[
+    {
+        "_name": "Lee",
+        "assists": [
+            {
+                "name": "Lee",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Porzingis",
+                "pass_from": 1,
+                "pass_to": 1
+            },
+            {
+                "name": "Jack",
+                "pass_from": 1,
+                "pass_to": 2
+            },
+            {
+                "name": "Ntilikina",
+                "pass_from": 0,
+                "pass_to": 1
+            },
+            {
+                "name": "O'Quinn",
+                "pass_from": 1,
+                "pass_to": 0
+            },
+            {
+                "name": "Beasley",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Thomas",
+                "pass_from": 1,
+                "pass_to": 0
+            },
+            {
+                "name": "Kanter",
+                "pass_from": 0,
+                "pass_to": 1
+            }
+        ]
+    },
+    {
+        "_name": "Porzingis",
+        "assists": [
+            {
+                "name": "Lee",
+                "pass_from": 1,
+                "pass_to": 1
+            },
+            {
+                "name": "Porzingis",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Jack",
+                "pass_from": 0,
+                "pass_to": 5
+            },
+            {
+                "name": "Ntilikina",
+                "pass_from": 0,
+                "pass_to": 1
+            },
+            {
+                "name": "O'Quinn",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Beasley",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Thomas",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Kanter",
+                "pass_from": 0,
+                "pass_to": 0
+            }
+        ]
+    },
+    {
+        "_name": "Jack",
+        "assists": [
+            {
+                "name": "Lee",
+                "pass_from": 2,
+                "pass_to": 1
+            },
+            {
+                "name": "Porzingis",
+                "pass_from": 5,
+                "pass_to": 0
+            },
+            {
+                "name": "Jack",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Ntilikina",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "O'Quinn",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Beasley",
+                "pass_from": 1,
+                "pass_to": 1
+            },
+            {
+                "name": "Thomas",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Kanter",
+                "pass_from": 0,
+                "pass_to": 0
+            }
+        ]
+    },
+    {
+        "_name": "Ntilikina",
+        "assists": [
+            {
+                "name": "Lee",
+                "pass_from": 1,
+                "pass_to": 0
+            },
+            {
+                "name": "Porzingis",
+                "pass_from": 1,
+                "pass_to": 0
+            },
+            {
+                "name": "Jack",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Ntilikina",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "O'Quinn",
+                "pass_from": 1,
+                "pass_to": 0
+            },
+            {
+                "name": "Beasley",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Thomas",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Kanter",
+                "pass_from": 1,
+                "pass_to": 0
+            }
+        ]
+    },
+    {
+        "_name": "O'Quinn",
+        "assists": [
+            {
+                "name": "Lee",
+                "pass_from": 0,
+                "pass_to": 1
+            },
+            {
+                "name": "Porzingis",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Jack",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Ntilikina",
+                "pass_from": 0,
+                "pass_to": 1
+            },
+            {
+                "name": "O'Quinn",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Beasley",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Thomas",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Kanter",
+                "pass_from": 0,
+                "pass_to": 0
+            }
+        ]
+    },
+    {
+        "_name": "Beasley",
+        "assists": [
+            {
+                "name": "Lee",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Porzingis",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Jack",
+                "pass_from": 1,
+                "pass_to": 1
+            },
+            {
+                "name": "Ntilikina",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "O'Quinn",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Beasley",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Thomas",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Kanter",
+                "pass_from": 0,
+                "pass_to": 0
+            }
+        ]
+    },
+    {
+        "_name": "Thomas",
+        "assists": [
+            {
+                "name": "Lee",
+                "pass_from": 0,
+                "pass_to": 1
+            },
+            {
+                "name": "Porzingis",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Jack",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Ntilikina",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "O'Quinn",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Beasley",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Thomas",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Kanter",
+                "pass_from": 0,
+                "pass_to": 0
+            }
+        ]
+    },
+    {
+        "_name": "Kanter",
+        "assists": [
+            {
+                "name": "Lee",
+                "pass_from": 1,
+                "pass_to": 0
+            },
+            {
+                "name": "Porzingis",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Jack",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Ntilikina",
+                "pass_from": 0,
+                "pass_to": 1
+            },
+            {
+                "name": "O'Quinn",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Beasley",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Thomas",
+                "pass_from": 0,
+                "pass_to": 0
+            },
+            {
+                "name": "Kanter",
+                "pass_from": 0,
+                "pass_to": 0
+            }
+        ]
+    }
+]
