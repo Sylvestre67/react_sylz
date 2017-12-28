@@ -18,6 +18,10 @@ urlpatterns = [
     # Templated views
     url(r'^$', IndexView.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
+
+
+    # Catch all others - React-router to handle 404...
+    url(r'^(?:.*)/?$', IndexView.as_view(), name='catch_all'),
 ]
 
 # API views
