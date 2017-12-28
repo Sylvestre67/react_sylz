@@ -2,12 +2,15 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework.routers import DefaultRouter
 
-from main.views import IndexView, PlaceViewSet
+from main.views import IndexView, PlaceViewSet, NBADatasetView
 
 router = DefaultRouter()
 router.register(r'places', PlaceViewSet, base_name='place')
 
 urlpatterns = [
+    # DataSets urls
+    url(r'^nba/assists\.json', NBADatasetView.as_view(), name='nba'),
+
     # API urls
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

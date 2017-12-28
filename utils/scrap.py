@@ -75,10 +75,10 @@ def scrap():
 
         output_v2.append(new_player)
 
-    with open('../static/assists.json', 'w') as outfile:
+    with open('./assists.json', 'w') as outfile:
         json.dump(output_v2, outfile, sort_keys=True, indent=4)
 
-    with open('../public/api/nba/assists.json', 'w') as outfile:
+    with open('../public/nba/assists.json', 'w') as outfile:
         json.dump(output_v2, outfile, sort_keys=True, indent=4)
 
 

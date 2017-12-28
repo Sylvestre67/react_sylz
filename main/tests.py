@@ -1,5 +1,6 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.contrib.gis.geos import Point
+from django.core.urlresolvers import reverse
 
 from rest_framework_gis.fields import GeoJsonDict
 from rest_framework.test import APIClient
@@ -39,3 +40,17 @@ class PlaceTestCase(TestCase):
         """A list of places is available via a places endpoint"""
         response = self.client.get('/api/places/')
         self.assertEqual(len(response.json()['results']), 2)
+
+class NBADatasetViewTestCase(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.json_response = self.client.get(reverse('nba'))
+        self.playerList = b'[{"_name": "Lee", "assists": [{"name": "Lee", "pass_from": 0, "pass_to": 0}, {"name": "Porzingis", "pass_from": 1, "pass_to": 1}, {"name": "Jack", "pass_from": 1, "pass_to": 2}, {"name": "Ntilikina", "pass_from": 0, "pass_to": 1}, {"name": "O\'Quinn", "pass_from": 1, "pass_to": 0}, {"name": "Beasley", "pass_from": 0, "pass_to": 0}, {"name": "Thomas", "pass_from": 1, "pass_to": 0}, {"name": "Kanter", "pass_from": 0, "pass_to": 1}]}, {"_name": "Porzingis", "assists": [{"name": "Lee", "pass_from": 1, "pass_to": 1}, {"name": "Porzingis", "pass_from": 0, "pass_to": 0}, {"name": "Jack", "pass_from": 0, "pass_to": 5}, {"name": "Ntilikina", "pass_from": 0, "pass_to": 1}, {"name": "O\'Quinn", "pass_from": 0, "pass_to": 0}, {"name": "Beasley", "pass_from": 0, "pass_to": 0}, {"name": "Thomas", "pass_from": 0, "pass_to": 0}, {"name": "Kanter", "pass_from": 0, "pass_to": 0}]}, {"_name": "Jack", "assists": [{"name": "Lee", "pass_from": 2, "pass_to": 1}, {"name": "Porzingis", "pass_from": 5, "pass_to": 0}, {"name": "Jack", "pass_from": 0, "pass_to": 0}, {"name": "Ntilikina", "pass_from": 0, "pass_to": 0}, {"name": "O\'Quinn", "pass_from": 0, "pass_to": 0}, {"name": "Beasley", "pass_from": 1, "pass_to": 1}, {"name": "Thomas", "pass_from": 0, "pass_to": 0}, {"name": "Kanter", "pass_from": 0, "pass_to": 0}]}, {"_name": "Ntilikina", "assists": [{"name": "Lee", "pass_from": 1, "pass_to": 0}, {"name": "Porzingis", "pass_from": 1, "pass_to": 0}, {"name": "Jack", "pass_from": 0, "pass_to": 0}, {"name": "Ntilikina", "pass_from": 0, "pass_to": 0}, {"name": "O\'Quinn", "pass_from": 1, "pass_to": 0}, {"name": "Beasley", "pass_from": 0, "pass_to": 0}, {"name": "Thomas", "pass_from": 0, "pass_to": 0}, {"name": "Kanter", "pass_from": 1, "pass_to": 0}]}, {"_name": "O\'Quinn", "assists": [{"name": "Lee", "pass_from": 0, "pass_to": 1}, {"name": "Porzingis", "pass_from": 0, "pass_to": 0}, {"name": "Jack", "pass_from": 0, "pass_to": 0}, {"name": "Ntilikina", "pass_from": 0, "pass_to": 1}, {"name": "O\'Quinn", "pass_from": 0, "pass_to": 0}, {"name": "Beasley", "pass_from": 0, "pass_to": 0}, {"name": "Thomas", "pass_from": 0, "pass_to": 0}, {"name": "Kanter", "pass_from": 0, "pass_to": 0}]}, {"_name": "Beasley", "assists": [{"name": "Lee", "pass_from": 0, "pass_to": 0}, {"name": "Porzingis", "pass_from": 0, "pass_to": 0}, {"name": "Jack", "pass_from": 1, "pass_to": 1}, {"name": "Ntilikina", "pass_from": 0, "pass_to": 0}, {"name": "O\'Quinn", "pass_from": 0, "pass_to": 0}, {"name": "Beasley", "pass_from": 0, "pass_to": 0}, {"name": "Thomas", "pass_from": 0, "pass_to": 0}, {"name": "Kanter", "pass_from": 0, "pass_to": 0}]}, {"_name": "Thomas", "assists": [{"name": "Lee", "pass_from": 0, "pass_to": 1}, {"name": "Porzingis", "pass_from": 0, "pass_to": 0}, {"name": "Jack", "pass_from": 0, "pass_to": 0}, {"name": "Ntilikina", "pass_from": 0, "pass_to": 0}, {"name": "O\'Quinn", "pass_from": 0, "pass_to": 0}, {"name": "Beasley", "pass_from": 0, "pass_to": 0}, {"name": "Thomas", "pass_from": 0, "pass_to": 0}, {"name": "Kanter", "pass_from": 0, "pass_to": 0}]}, {"_name": "Kanter", "assists": [{"name": "Lee", "pass_from": 1, "pass_to": 0}, {"name": "Porzingis", "pass_from": 0, "pass_to": 0}, {"name": "Jack", "pass_from": 0, "pass_to": 0}, {"name": "Ntilikina", "pass_from": 0, "pass_to": 1}, {"name": "O\'Quinn", "pass_from": 0, "pass_to": 0}, {"name": "Beasley", "pass_from": 0, "pass_to": 0}, {"name": "Thomas", "pass_from": 0, "pass_to": 0}, {"name": "Kanter", "pass_from": 0, "pass_to": 0}]}]'
+    def test_nba_url_serve_view(self):
+        """The NBA url endpoints works"""
+        self.assertEqual(self.json_response.status_code, 200)
+
+    def test_nba_serves_list_of_player(self):
+        """The NBA view serves the list of players"""
+        self.assertEqual(self.json_response.content, self.playerList)
