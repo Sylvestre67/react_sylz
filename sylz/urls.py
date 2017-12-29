@@ -9,7 +9,7 @@ router.register(r'places', PlaceViewSet, base_name='place')
 
 urlpatterns = [
     # DataSets urls
-    url(r'^nba/assists\.json', NBADatasetView.as_view(), name='nba'),
+    url(r'^api/nba/assists\.json', NBADatasetView.as_view(), name='nba'),
 
     # API urls
     url(r'^api/', include(router.urls)),
@@ -21,7 +21,8 @@ urlpatterns = [
 
 
     # Catch all others - React-router to handle 404...
-    url(r'^(?:.*)/?$', IndexView.as_view(), name='catch_all'),
+    # (?!api) is necessary to let api/ routes being catched for DJRF ViewSets
+    url(r'^(?!api)(?:.*)/?$', IndexView.as_view(), name='catch_all'),
 ]
 
 # API views
