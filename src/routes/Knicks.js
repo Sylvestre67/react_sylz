@@ -16,7 +16,7 @@ class Knicks extends React.Component{
     }
 
     componentWillMount() {
-        this.getStats = Observable.fromPromise(fetch('/nba/assists.json'))
+        this.getStats = Observable.fromPromise(fetch('/api/nba/assists.json'))
             .map(response => {return response.json()})
             .subscribe(json => json.then((stats) => {
                 this.setState({stats: stats});
