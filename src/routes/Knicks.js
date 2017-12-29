@@ -39,19 +39,25 @@ class Knicks extends React.Component{
 
         return (
             <div>
-                {/*<pre><code>{JSON.stringify(this.state.stats, null, 4)}</code></pre>*/}
-                <h3>Assists profile</h3>
-                {(activePlayer && this.state.stats)
-                    ? <AssistsProfile player={activePlayer} stats={this.state.stats} />
-                    : null
-                }
-
-                <h3>Assists repartition</h3>
-                {(this.state.stats)
-                    ? <AssistsTable data={this.state.stats}
-                                    updateActivePlayer={this.updateActivePlayer}/>
-                    : null
-                }
+                <h3>Assists Profile</h3>
+                {/* eslint-disable */}
+                <p>Two different approach to Data-viz. The Interactions Map is done the <a href="https://d3js.org/"
+                       rel="noopener noreferrer"
+                       target="_blank">D3.js</a> way,
+                    the Assists Balance is made with <a href="https://reactjs.org/"
+                       rel="noopener noreferrer"
+                       target="_blank">React</a>.
+                </p>
+                {(activePlayer && this.state.stats) ? <AssistsProfile player={activePlayer} stats={this.state.stats} /> : null}
+                <p style={{fontSize: '80%', textAlign:'right'}}>Dataset courtesy of <a href="http://stats.nba.com/"
+                                       target="_blank"
+                                       rel="noreferrer noopener">stats.nba.com</a>.
+                    Click <a href="http://stats.nba.com/stats/playbyplayv2?EndPeriod=10&EndRange=55800&GameID=0021700509&RangeType=2&Season=2017-18&SeasonType=Regular+Season&StartPeriod=1&StartRange=0"
+                             target="_blank"
+                             rel="noreferrer noopener">here</a> to
+                    download original data.
+                </p>
+                {/* eslint-enable */}
             </div>
         );
     }

@@ -1,0 +1,51 @@
+
+@keyframes fillin {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.assists-balance{
+
+}
+
+.assists-balance .player{
+    position:relative;
+    display:flex;
+    align-items: center;
+}
+
+.assists-balance .player div{
+
+}
+
+.assists-balance .player div:not(:first-child){
+    margin:.8em 0;
+    flex-grow: 2;
+    background-color:#eeeeee;
+}
+
+
+.assists-balance .player div.bar > div{
+
+}
+
+.assists-balance .player div.bar > div > div{
+    height:2em;
+    width:100%;
+    background-color:cornflowerblue;
+    animation-duration: 250ms;
+    animation-name: fillin;
+    animation-timing-function: cubic-bezier(.2,.3,.4,.8);
+}
+
+.assists-balance .player div.bar:nth-child(2) > div {
+    float:right;
+}
+
+.assists-balance .player div.bar:nth-child(2) > div > div{
+    background-color:lightslategrey;
+}

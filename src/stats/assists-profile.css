@@ -21,3 +21,26 @@
     stroke:none;
     font-size:1.2em;
 }
+
+.select-player{
+    border: 1px solid #ccc;
+    width: 120px;
+    border-radius: 0;
+    overflow: hidden;
+    background: #eeeeee url("https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-down-01-256.png") no-repeat 90% 50%;
+    background-size: 1em;
+}
+
+.select-player select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.select-player select:focus {
+    outline: none;
+}
