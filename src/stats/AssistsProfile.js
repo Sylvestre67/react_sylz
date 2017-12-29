@@ -142,11 +142,11 @@ class AssistsProfile extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col-xs-6">
+                <div className="col-xs-12 col-sm-6">
                     <h5>Interactions Map</h5>
                     <svg ref={(element) => { this.heatMapElement = element; }} className="assists-heatmap" />
                 </div>
-                <div className="col-xs-6">
+                <div className="col-xs-12 col-sm-6">
                     <h5>Assists Balance</h5>
                     <div className='select-player'>
                         <select onChange={this.handleSelectNewPlayer}>
